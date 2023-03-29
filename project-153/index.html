@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script>
+    
+    <!-- IMPORTED COMPONENTS -->    
+    <script src="./js/Rotation.js"></script>
+    
+  </head>
+  <body>
+    <a-scene >
+      
+      <a-a-assets>
+        <a-asset-item id="island" src="assets/island/scene.gltf"></a-asset-item>
+
+        <a-asset-item
+          id="scuba_driver"
+          src="assets/scuba_driver/scene.gltf"
+        ></a-asset-item>
+      </a-a-assets>
+
+      <a-sky
+        geometry="primitive: sphere;"
+        material="shader: gradient; bottomColor: #00009e; topColor:109 205 227;offset: 0.0001;"
+        radius="100"
+        theta-length="180"
+        side="double"
+      >
+      
+        <a-entity
+          gltf-model="#island"
+          scale="1 1 1"
+          position="0 -15 -40"
+        ></a-entity>
+       
+      </a-sky>
+
+      <a-entity
+        gltf-model="#scuba_driver"
+        scale="0.1 0.1 0.1"
+        position="5 -9 15"
+        rotation="0 90 -20"        
+        diver-rotation-reader
+      >
+      </a-entity>
+
+      <a-cylinder color="blue" radius="100" height="10" opacity="0.5"></a-cylinder>
+
+      
+      <a-entity
+        camera="active: true"
+        look-controls
+        position="0 10 25"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>
